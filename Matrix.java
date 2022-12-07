@@ -239,5 +239,6 @@ public class Matrix {
 			   } else {
 				   throw new IllegalArgumentException("Determinant does not exist");
 			   }
+		   }
 
 }
