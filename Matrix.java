@@ -223,5 +223,21 @@ public class Matrix {
 			}
 			return this.matrix;
 		}
+		
+		   public double determinant(double[][] matrix){
+			   determinant = 0;
+			   if(matrix.length == matrix[0].length) {
+				   if(matrix.length == 1) {
+					   determinant = matrix[0][0];
+					   return determinant;
+				   } else if(matrix.length == 2) {
+					   determinant = (matrix[0][0]*matrix[1][1])-(matrix[0][1]*matrix[1][0]);
+					   return determinant;
+				   } else {
+					   throw new IllegalArgumentException("Not made yet");
+				   }
+			   } else {
+				   throw new IllegalArgumentException("Determinant does not exist");
+			   }
 
 }
