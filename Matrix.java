@@ -4,6 +4,7 @@ public class Matrix {
 	
 	private double[][] matrix;
 	private double[][] point;
+	private double determinant; 
 	
 	public double[][] addition(double[][] m1, double[][] m2) {
 		matrix = new double[m1.length][m2[0].length];
@@ -225,7 +226,6 @@ public class Matrix {
 		}
 		
 		   public double determinant(double[][] matrix){
-			   determinant = 0;
 			   if(matrix.length == matrix[0].length) {
 				   if(matrix.length == 1) {
 					   determinant = matrix[0][0];
@@ -233,8 +233,14 @@ public class Matrix {
 				   } else if(matrix.length == 2) {
 					   determinant = (matrix[0][0]*matrix[1][1])-(matrix[0][1]*matrix[1][0]);
 					   return determinant;
+				   } else if(matrix.length == 3){
+					   double[][] cutMatrix1 = {{matrix[1][1], matrix[1][2]}, {matrix[2][1], matrix[2][2]}};
+					   double[][] cutMatrix2 = {{matrix[1][0], matrix[1][2]}, {matrix[2][0], matrix[2][2]}};
+					   double[][] cutMatrix3 = {{matrix[1][0], matrix[1][2]}, {matrix[2][0], matrix[2][1]}};
+					   determinant = matrix[0][0]*determinant(cutMatrix1)+(-1*matrix[0][1])*determinant(cutMatrix2)+matrix[0][2]*determinant(cutMatrix3);
+					   return determinant; 
 				   } else {
-					   throw new IllegalArgumentException("Not made yet");
+					   throw new IllegalArgumentException("det NxN not made yet");
 				   }
 			   } else {
 				   throw new IllegalArgumentException("Determinant does not exist");
