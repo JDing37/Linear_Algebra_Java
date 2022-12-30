@@ -2,13 +2,15 @@ package Linear_Algebra;
 
 public class Vector extends Matrix{
 	
-	public double magnitude;
-	public double dotProduct;
-	public double scalarProjection;
-	public double[][] vector;
-	public double inverseMagnitude;
-	public double vectorProjection;
-	public double vectorAngle;
+	private double magnitude;
+	private double dotProduct;
+	private double scalarProjection;
+	private double[][] vector;
+	private double inverseMagnitude;
+	private double vectorProjection;
+	private double vectorAngle;
+	private double area;
+	private double volume;
 
 	public double magnitude(double[][] vector) {
 		magnitude  = 0;
@@ -83,5 +85,16 @@ public class Vector extends Matrix{
 			throw new IllegalArgumentException("Please enter vectors as rows OR wrong dimension of vectors");
 		}
 	}
+	
+	public double areaParrellogram(double[][] v1, double[][] v2) {
+		area = magnitude(crossProduct(v1,v2));
+		return area;
+	}
+	
+	public double volumeParallelepided(double[][] v1, double[][] v2, double[][] v3) {
+		volume = dotProduct(v1, crossProduct(v2,v3));
+		return volume;
+	}
+	
 	
 }
